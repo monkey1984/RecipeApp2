@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Recipes";
+}
+
+
+@model IEnumerable<RecipeApp2.Models.RecipeAccessLayer>
+
+<div class="text-background">
+    <h2>@ViewBag.Title</h2>
+
+    <table class="table table-bordered table-responsive">
+        <thead>
+            <tr id="text-header">
+                <th>RecipeID</th>
+                <th>RecipeName</th>
+                <th>Rating</th>
+                <th>Hours</th>
+                <th>Minutes</th>
+                <th>Instructions</th>
+                </trid="text-header">
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.RecipeID</th>
+                <th>@item.RecipeName</th>
+                <th>@item.Rating</th>
+                <th>@item.Hours</th>
+                <th>@item.Minutes</th>
+                <th>@item.Instructions</th>
+            </tr>
+        }
+    </table>
+</div>
