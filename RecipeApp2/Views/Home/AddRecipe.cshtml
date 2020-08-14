@@ -1,7 +1,41 @@
-﻿
+﻿@model RecipeApp2.Models.RecipeAccessLayer
 <div class="text-background">
     <h2>Add Your Recipe</h2>
     <h2>@ViewBag.Title</h2>
     <h3>@ViewBag.Message</h3>
+
+    <form asp-action="AddRecipe" class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label">Recipe Name</label>
+            <input asp-for="RecipeName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">Rating 1-5</label>
+            <input asp-for="Rating" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">Hours</label>
+            <input asp-for="Hours" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">Minutes</label>
+            <input asp-for="Minutes" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">Instructions</label>
+            <input asp-for="Instructions" class="form-control" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        </div>
+    </form>
+    @{ 
+        if (TempData["msg"] != null)
+        {
+            <script>
+                alert('@TempData["msg"]')
+            </script>
+        }
+    }
 </div>
 

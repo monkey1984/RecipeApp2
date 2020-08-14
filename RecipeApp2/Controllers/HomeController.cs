@@ -9,6 +9,7 @@ namespace RecipeApp2.Controllers
 {
     public class HomeController : Controller
     {
+        
         public ActionResult Index()
         {
             return View();
@@ -20,10 +21,28 @@ namespace RecipeApp2.Controllers
             List<RecipeAccessLayer> rec = obj.Getdata();
             return View(rec);
         }
-
         public ActionResult AddRecipe()
         {
-            ViewBag.Message = "Form here.";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddRecipe([Bind] RecipeAccessLayer rec)
+        {
+            Recipe obj = new Recipe();
+            try {
+                if (ModelState.IsValid)
+                {
+                   
+                    string result = obj.SaveData(rec);
+                    TempData["msg"] = result;
+
+                }
+            } catch (Exception ex)
+            {
+                TempData["msg"] = ex.Message;
+            }
+
             return View();
         }
 
